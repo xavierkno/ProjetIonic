@@ -1,13 +1,46 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>Mon Profil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <!-- Carte pour le pseudo -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align: center;">Pseudo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="text-align: center;">
+      <div *ngIf="editingField !== 'displayName'">
+        <p>{{ user.displayName }}</p>
+        <ion-button fill="outline" (click)="enableEdit('displayName')">Modifier</ion-button>
+      </div>
+      <ion-input
+        *ngIf="editingField === 'displayName'"
+        [(ngModel)]="user.displayName"
+        (keyup.enter)="saveField('displayName')"
+      ></ion-input>
+      <ion-button
+        *ngIf="editingField === 'displayName'"
+        color="success"
+        (click)="saveField('displayName')"
+        >Enregistrer</ion-button
+      >
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Carte pour le mot de passe -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align: center;">Mot de passe</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="text-align: center;">
+      <ion-button fill="outline" color="danger" (click)="changePassword()">
+        Modifier le mot de passe
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Bouton Déconnexion -->
+  <ion-button expand="block" color="danger" (click)="logout()">Se déconnecter</ion-button>
 </ion-content>

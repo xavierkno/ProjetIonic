@@ -1,0 +1,23 @@
+ion-card {
+    margin: 16px;
+  }
+  
+  ion-card-title {
+    font-weight: bold;
+  }
+  
+  ion-card-content ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  ion-card-content li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  ion-card-content li ion-icon {
+    margin-right: 8px;
+  }
+  

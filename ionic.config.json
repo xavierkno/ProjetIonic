@@ -1,0 +1,7 @@
+{
+  "name": "Back2U",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

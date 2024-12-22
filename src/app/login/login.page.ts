@@ -25,7 +25,7 @@ export class LoginPage {
     this.Auth.loginWithEmail(this.email, this.password)
       .then(() => {
         console.log('Connexion réussie !');
-        this.Router.navigateByUrl('home');
+        this.Router.navigateByUrl('/tabs/home');
       })
       .catch((error) => {
         console.error('Erreur lors de la connexion : ', error.message);

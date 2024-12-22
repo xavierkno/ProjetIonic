@@ -17,13 +17,13 @@ export class ListPage implements OnInit {
     private toastController: ToastController ) {}
 
   ngOnInit() {
-    const auth = getAuth(); // Récupérer l'authentification Firebase
+    const auth = getAuth(); 
     const user = auth.currentUser;
 
     if (user) {
-      this.userId = user.uid; // Obtenir l'UID de l'utilisateur
+      this.userId = user.uid; 
       this.firestoreService.getUserItems(this.userId).subscribe((data) => {
-        this.items = data; // Récupérer et afficher les objets de l'utilisateur
+        this.items = data;
       });
     } else {
       console.error('Utilisateur non connecté');
@@ -133,7 +133,6 @@ export class ListPage implements OnInit {
   
     await alert.present();
   
-    // Réinitialise le focus après la fermeture
     await alert.onDidDismiss();
     document.body.focus();
   }  

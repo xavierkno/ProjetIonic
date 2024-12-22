@@ -17,8 +17,8 @@ export class NativeFeaturePage {
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: false,
-        resultType: CameraResultType.DataUrl, // Retourne la photo sous forme de Data URL
-        source: CameraSource.Camera, // Utilise l'appareil photo
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera, 
       });
       this.photo = image.dataUrl;
     } catch (error) {
@@ -32,7 +32,7 @@ export class NativeFeaturePage {
         quality: 90,
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
-        source: CameraSource.Photos, // Utilise la galerie
+        source: CameraSource.Photos,
       });
       this.photo = image.dataUrl;
     } catch (error) {

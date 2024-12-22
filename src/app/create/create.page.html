@@ -6,7 +6,6 @@
 
 <ion-content class="ion-padding">
   <form (ngSubmit)="createObject()">
-    <!-- Titre -->
     <ion-item>
       <ion-label position="stacked">Titre de l'objet</ion-label>
       <ion-input
@@ -17,7 +16,6 @@
       ></ion-input>
     </ion-item>
 
-    <!-- Description -->
     <ion-item>
       <ion-label position="stacked">Description</ion-label>
       <ion-textarea
@@ -28,7 +26,6 @@
       ></ion-textarea>
     </ion-item>
 
-    <!-- Salle -->
     <ion-item>
       <ion-label position="stacked">Salle</ion-label>
       <ion-input
@@ -39,7 +36,6 @@
       ></ion-input>
     </ion-item>
 
-    <!-- Lien de l'image -->
     <ion-item>
       <ion-label position="stacked">Lien de l'image</ion-label>
       <ion-input
@@ -56,7 +52,6 @@
     </ion-button>
   </form>
 
-  <!-- Toast pour afficher un message de succès -->
   <ion-toast
     [message]="'Objet ajouté avec succès !'"
     [isOpen]="showToast"

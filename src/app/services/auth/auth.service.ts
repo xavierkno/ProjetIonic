@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import {
   createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -52,5 +54,14 @@ export class AuthService {
       .catch((error) => {
         console.error('Erreur lors de la déconnexion :', error);
       });
+  }
+
+  isLoggedIn(): Promise<boolean> {
+    const auth = getAuth();
+    return new Promise((resolve) => {
+      onAuthStateChanged(auth, (user) => {
+        resolve(!!user);
+      });
+    });
   }
 }

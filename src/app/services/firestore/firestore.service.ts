@@ -11,24 +11,20 @@ export class FirestoreService {
 
   constructor(private firestore: AngularFirestore) {}
 
-  // Récupérer tous les objets
   getAllItems(): Observable<any[]> {
     return this.firestore.collection(this.collectionName).valueChanges({ idField: 'id' });
   }
 
-  // Récupérer les objets d'un utilisateur spécifique
   getUserItems(userId: string): Observable<any[]> {
     return this.firestore
       .collection(this.collectionName, (ref) => ref.where('userId', '==', userId))
-      .valueChanges({ idField: 'id' }); // Inclut l'ID des documents
+      .valueChanges({ idField: 'id' }); 
   }
 
-  // Ajouter un objet
   addItem(item: any): Promise<DocumentReference<unknown>> {
     return this.firestore.collection(this.collectionName).add(item);
   }
 
-  // Modifier un objet existant
   updateItem(id: string, item: any): Promise<void> {
     return this.firestore.collection(this.collectionName).doc(id).update(item);
   }

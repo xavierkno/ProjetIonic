@@ -5,13 +5,11 @@
 </ion-header>
 
 <ion-content>
-  <!-- Message si la liste est vide -->
   <div *ngIf="items.length === 0" class="empty-state">
     <ion-icon name="sad-outline" class="empty-icon"></ion-icon>
     <p class="empty-text">Aucun objet perdu ou trouvé à afficher pour le moment.</p>
   </div>
 
-  <!-- Grille des cartes pour les objets -->
   <ion-grid *ngIf="items.length > 0">
     <ion-row>
       <ion-col size="12" size-md="6" *ngFor="let item of items">

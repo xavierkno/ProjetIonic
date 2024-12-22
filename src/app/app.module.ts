@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase), // Assurez-vous que `firebase` est bien défini
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],

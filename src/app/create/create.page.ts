@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getAuth } from 'firebase/auth'; // Import pour récupérer l'utilisateur
+import { getAuth } from 'firebase/auth';
 import { FirestoreService } from '../services/firestore/firestore.service';
 
 @Component({
@@ -13,13 +13,13 @@ export class CreatePage {
   description: string = '';
   room: string = '';
   imageUrl: string = '';
-  showToast: boolean = false; // Variable pour afficher le toast
+  showToast: boolean = false; 
 
   constructor(private firestoreService: FirestoreService) {}
 
   async createObject() {
-    const auth = getAuth(); // Obtenir l'authentification Firebase
-    const user = auth.currentUser; // Obtenir l'utilisateur connecté
+    const auth = getAuth();
+    const user = auth.currentUser;
 
     if (!user) {
       console.error('Utilisateur non connecté');
@@ -38,8 +38,8 @@ export class CreatePage {
       try {
         await this.firestoreService.addItem(item);
         console.log('Objet ajouté avec succès !');
-        this.showToast = true; // Afficher le message de succès
-        this.clearFields(); // Réinitialiser les champs
+        this.showToast = true;
+        this.clearFields();
       } catch (error) {
         console.error('Erreur lors de l’ajout de l’objet :', error);
       }
@@ -48,7 +48,6 @@ export class CreatePage {
     }
   }
 
-  // Fonction pour réinitialiser les champs du formulaire
   clearFields() {
     this.title = '';
     this.description = '';

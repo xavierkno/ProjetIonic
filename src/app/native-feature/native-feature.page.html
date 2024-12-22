@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>native-feature</ion-title>
+    <ion-title>Caméra</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">native-feature</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Prendre une Photo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img *ngIf="photo" [src]="photo" alt="Photo" />
+      <ion-button expand="block" (click)="takePhoto()">Prendre une photo</ion-button>
+      <ion-button expand="block" (click)="chooseFromGallery()">Choisir depuis la galerie</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

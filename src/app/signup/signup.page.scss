@@ -1,4 +1,4 @@
-.register-page {
+
   ion-content {
       --background: #ffffff;
   }
@@ -42,18 +42,18 @@
       font-weight: bold;
   }
 
-  .signinLink {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
 
-      p {
-          font-size: 0.9rem;
-      }
+.signinLink {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 
-      a {
-          text-decoration: none;
-          font-weight: bold;
-      }
+    p {
+      font-size: 0.9rem;
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
   }
-}

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button
         defaultHref="/login"
-        [ngStyle]="{color:'white'}"
+        [ngStyle]="{ color: 'white' }"
       ></ion-back-button>
     </ion-buttons>
     <ion-title>Inscription</ion-title>
@@ -12,43 +12,87 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="form">
-    <ion-input
-      labelPlacement="floating"
-      fill="outline"
-      label="Email"
-      type="email"
-      placeholder="email@example.com"
-      [(ngModel)]="email"
-    ></ion-input>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input
+        type="email"
+        placeholder="email@example.com"
+        [(ngModel)]="email"
+        name="email"
+        required
+      ></ion-input>
+    </ion-item>
+
     <br />
-    <ion-input
-      labelPlacement="floating"
-      fill="outline"
-      label="Name"
-      type="text"
-      placeholder="Entrez votre pseudo"
-      [(ngModel)]="name"
-    ></ion-input>
+
+    <ion-item>
+      <ion-label position="stacked">Nom</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Entrez votre pseudo"
+        [(ngModel)]="name"
+        name="name"
+        required
+      ></ion-input>
+    </ion-item>
+
     <br />
-    <ion-input
-      labelPlacement="floating"
-      fill="outline"
-      label="Password"
-      type="password"
-      [(ngModel)]="password1"
-    ></ion-input>
+
+    <ion-item>
+      <ion-label position="stacked">Mot de passe</ion-label>
+      <ion-input
+        [type]="passwordType1"
+        placeholder="Entrez votre mot de passe"
+        [(ngModel)]="password1"
+        name="password1"
+        required
+      ></ion-input>
+      <ion-button
+        fill="clear"
+        slot="end"
+        aria-label="Show/hide"
+        (click)="togglePasswordVisibility1()"
+      >
+        <ion-icon
+          slot="icon-only"
+          [name]="passwordType1 === 'password' ? 'eye-off' : 'eye'"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+
     <br />
-    <ion-input
-      labelPlacement="floating"
-      fill="outline"
-      label="Password"
-      type="password"
-      [(ngModel)]="password2"
-    ></ion-input>
+
+    <ion-item>
+      <ion-label position="stacked">Confirmez le mot de passe</ion-label>
+      <ion-input
+        [type]="passwordType2"
+        placeholder="Confirmez votre mot de passe"
+        [(ngModel)]="password2"
+        name="password2"
+        required
+      ></ion-input>
+      <ion-button
+        fill="clear"
+        slot="end"
+        aria-label="Show/hide"
+        (click)="togglePasswordVisibility2()"
+      >
+        <ion-icon
+          slot="icon-only"
+          [name]="passwordType2 === 'password' ? 'eye-off' : 'eye'"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+
     <br />
-    <ion-button (click)="signup()" expand="block" color="medium">
-      inscription
+
+    <ion-button (click)="signup()" expand="block" color="primary">
+      Inscription
     </ion-button>
+
+    <div class="signinLink">
+      <p>Déjà membre ? <a style="color:#FFC33F" [routerLink]="['/login']">Se connecter maintenant</a></p>
+    </div>
   </div>
 
   <ion-alert

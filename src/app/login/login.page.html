@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Connexion</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,6 +13,7 @@
 
     <form (ngSubmit)="onLogin()" class="form">
       <div class="ion-padding">
+        <!-- Email -->
         <ion-item>
           <ion-input
             type="email"
@@ -24,7 +25,11 @@
           ></ion-input>
           <ion-icon name="person-outline" slot="start"></ion-icon>
         </ion-item>
+        <ion-text *ngIf="showEmailError" color="danger" class="error-text">
+          L'email est requis.
+        </ion-text>
 
+        <!-- Password -->
         <ion-item>
           <ion-input
             [type]="passwordType"
@@ -47,15 +52,31 @@
             ></ion-icon>
           </ion-button>
         </ion-item>
+        <ion-text *ngIf="showPasswordError" color="danger" class="error-text">
+          Le mot de passe est requis.
+        </ion-text>
 
+        <!-- Login Button -->
         <ion-button expand="block" type="submit" color="primary" class="login-btn">
           Connexion
         </ion-button>
 
+        <!-- Signup Link -->
         <div class="signupLink">
-          <p>Nouveau membre ? <a [routerLink]="'/signup'" style="color:#FFC33F">S'inscrire maintenant</a></p>
+          <p>
+            Nouveau membre ? <a [routerLink]="'/signup'" style="color:#FFC33F">S'inscrire maintenant</a>
+          </p>
         </div>
       </div>
     </form>
   </div>
+
+  <!-- Alert for Login Errors -->
+  <ion-alert
+    [isOpen]="showLoginError"
+    [header]="'Erreur de connexion'"
+    [message]="loginErrorMessage"
+    [buttons]="['OK']"
+    (ionAlertDidDismiss)="showLoginError = false"
+  ></ion-alert>
 </ion-content>

@@ -6,46 +6,48 @@ import { AuthService } from '../services/auth/auth.service';
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class LoginPage {
   email: string = '';
   password: string = '';
-
   passwordType: string = 'password';
 
-  constructor(private Router: Router, private Auth: AuthService) {}
+  showEmailError: boolean = false;
+  showPasswordError: boolean = false;
+  showLoginError: boolean = false;
+  loginErrorMessage: string = '';
+
+  constructor(private router: Router, private auth: AuthService) {}
 
   onLogin() {
-    if (this.email.trim() === '' || this.password.trim() === '') {
-      console.error('Email et mot de passe sont requis.');
+    this.showEmailError = false;
+    this.showPasswordError = false;
+
+    if (this.email.trim() === '') {
+      this.showEmailError = true;
+    }
+    if (this.password.trim() === '') {
+      this.showPasswordError = true;
+    }
+
+    if (this.showEmailError || this.showPasswordError) {
       return;
     }
-  
-    this.Auth.loginWithEmail(this.email, this.password)
+
+    this.auth
+      .loginWithEmail(this.email, this.password)
       .then(() => {
         console.log('Connexion réussie !');
-        this.Router.navigateByUrl('/tabs/home');
+        this.router.navigateByUrl('/tabs/home');
       })
-      .catch((error) => {
-        console.error('Erreur lors de la connexion : ', error.message);
+      .catch(() => {
+        this.showLoginError = true;
+        this.loginErrorMessage = "Identifiant ou mot de passe incorrect.";
       });
   }
-  
 
   changeInputPasswordType() {
-    this.passwordType = this.passwordType == 'password' ? 'text' : 'password';
-  }
-
-  login() {
-    if (this.email != '' && this.password != '') {
-      this.Auth.loginWithEmail(this.email, this.password);
-      this.email = '';
-      this.password = '';
-    }
-  }
-
-  signup() {
-    this.Router.navigateByUrl('signup');
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
   }
 }

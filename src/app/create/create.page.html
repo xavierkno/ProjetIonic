@@ -59,4 +59,12 @@
     color="success"
     (ionToastDidDismiss)="showToast = false"
   ></ion-toast>
+
+  <ion-alert
+    [isOpen]="showErrorAlert"
+    [header]="'Erreur'"
+    [message]="'Veuillez remplir tous les champs avant de soumettre.'"
+    [buttons]="['OK']"
+    (ionAlertDidDismiss)="showErrorAlert = false"
+  ></ion-alert>
 </ion-content>

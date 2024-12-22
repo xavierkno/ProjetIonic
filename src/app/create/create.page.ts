@@ -6,14 +6,15 @@ import { FirestoreService } from '../services/firestore/firestore.service';
   selector: 'app-create',
   templateUrl: './create.page.html',
   styleUrls: ['./create.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class CreatePage {
   title: string = '';
   description: string = '';
   room: string = '';
   imageUrl: string = '';
-  showToast: boolean = false; 
+  showToast: boolean = false;
+  showErrorAlert: boolean = false;
 
   constructor(private firestoreService: FirestoreService) {}
 
@@ -44,7 +45,7 @@ export class CreatePage {
         console.error('Erreur lors de l’ajout de l’objet :', error);
       }
     } else {
-      console.log('Veuillez remplir tous les champs.');
+      this.showErrorAlert = true;
     }
   }
 

@@ -13,7 +13,6 @@
 
     <form (ngSubmit)="onLogin()" class="form">
       <div class="ion-padding">
-        <!-- Email -->
         <ion-item>
           <ion-input
             type="email"
@@ -29,7 +28,6 @@
           L'email est requis.
         </ion-text>
 
-        <!-- Password -->
         <ion-item>
           <ion-input
             [type]="passwordType"
@@ -56,12 +54,10 @@
           Le mot de passe est requis.
         </ion-text>
 
-        <!-- Login Button -->
         <ion-button expand="block" type="submit" color="primary" class="login-btn">
           Connexion
         </ion-button>
 
-        <!-- Signup Link -->
         <div class="signupLink">
           <p>
             Nouveau membre ? <a [routerLink]="'/signup'" style="color:#FFC33F">S'inscrire maintenant</a>
@@ -71,7 +67,6 @@
     </form>
   </div>
 
-  <!-- Alert for Login Errors -->
   <ion-alert
     [isOpen]="showLoginError"
     [header]="'Erreur de connexion'"

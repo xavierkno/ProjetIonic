@@ -1,7 +1,59 @@
-.form {
-    margin-top: 15vh;
+.register-page {
+  ion-content {
+      --background: #ffffff;
   }
-  
-ion-title {
-    padding: 0;
+
+  .container {
+      margin: 0 auto;
+      max-width: 90%;
+      padding: 20px;
+      border-radius: 15px;
+  }
+
+  .header {
+      margin-top: 60px;
+      margin-bottom: 40px;
+      text-align: center;
+
+      .title {
+          font-size: 1.8rem;
+          font-weight: bold;
+      }
+
+      .subTitle {
+          color: gray;
+          font-size: 1rem;
+      }
+  }
+
+  ion-item {
+      --background: #f1f1f1;
+      border-radius: 10px;
+      margin-bottom: 16px;
+  }
+
+  .input {
+      font-size: 1rem;
+  }
+
+  .register-btn {
+      margin-top: 20px;
+      border-radius: 10px;
+      font-weight: bold;
+  }
+
+  .signinLink {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      p {
+          font-size: 0.9rem;
+      }
+
+      a {
+          text-decoration: none;
+          font-weight: bold;
+      }
+  }
 }

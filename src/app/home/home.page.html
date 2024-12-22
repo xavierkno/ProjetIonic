@@ -1,20 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Objets Perdus</ion-title>
+    <ion-title>Objets Perdus et Trouvés</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-thumbnail slot="start">
-        <img [src]="item.imageUrl" alt="Image de l'objet" />
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.description }}</p>
-        <p>Salle : {{ item.room }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <!-- Message si la liste est vide -->
+  <div *ngIf="items.length === 0" class="empty-state">
+    <ion-icon name="sad-outline" class="empty-icon"></ion-icon>
+    <p class="empty-text">Aucun objet perdu ou trouvé à afficher pour le moment.</p>
+  </div>
+
+  <!-- Grille des cartes pour les objets -->
+  <ion-grid *ngIf="items.length > 0">
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let item of items">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ item.title }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-thumbnail>
+              <img [src]="item.imageUrl" alt="Image de l'objet" />
+            </ion-thumbnail>
+            <p>{{ item.description }}</p>
+            <p>Salle : {{ item.room }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

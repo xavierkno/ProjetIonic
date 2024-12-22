@@ -55,4 +55,13 @@
       Ajouter l'objet
     </ion-button>
   </form>
+
+  <!-- Toast pour afficher un message de succès -->
+  <ion-toast
+    [message]="'Objet ajouté avec succès !'"
+    [isOpen]="showToast"
+    [duration]="2000"
+    color="success"
+    (ionToastDidDismiss)="showToast = false"
+  ></ion-toast>
 </ion-content>

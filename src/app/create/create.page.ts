@@ -13,6 +13,7 @@ export class CreatePage {
   description: string = '';
   room: string = '';
   imageUrl: string = '';
+  showToast: boolean = false; // Variable pour afficher le toast
 
   constructor(private firestoreService: FirestoreService) {}
 
@@ -37,11 +38,21 @@ export class CreatePage {
       try {
         await this.firestoreService.addItem(item);
         console.log('Objet ajouté avec succès !');
+        this.showToast = true; // Afficher le message de succès
+        this.clearFields(); // Réinitialiser les champs
       } catch (error) {
         console.error('Erreur lors de l’ajout de l’objet :', error);
       }
     } else {
       console.log('Veuillez remplir tous les champs.');
     }
+  }
+
+  // Fonction pour réinitialiser les champs du formulaire
+  clearFields() {
+    this.title = '';
+    this.description = '';
+    this.room = '';
+    this.imageUrl = '';
   }
 }

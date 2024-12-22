@@ -6,13 +6,15 @@ import { Router } from '@angular/router';
   selector: 'app-signup',
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class SignupPage {
   email: string = '';
   name: string = '';
   password1: string = '';
   password2: string = '';
+  showError: boolean = false; // Variable pour afficher ou masquer l'alerte
+  errorMessage: string = ''; // Message d'erreur à afficher
 
   constructor(private Auth: AuthService, private Router: Router) {}
 
@@ -21,13 +23,26 @@ export class SignupPage {
       this.email.trim() !== '' &&
       this.password1 === this.password2 &&
       this.password1.length >= 6 &&
-      this.name.trim() != ''
+      this.name.trim() !== ''
     ) {
-      this.Auth.signup(this.email, this.password1, this.name);
+      this.Auth.signup(this.email, this.password1, this.name).catch((error) => {
+        // En cas d'erreur, afficher un message d'alerte
+        if (error.code === 'auth/email-already-in-use') {
+          this.errorMessage =
+            'Cette adresse e-mail est déjà utilisée. Veuillez en essayer une autre.';
+        } else {
+          this.errorMessage = 'Une erreur est survenue. Veuillez réessayer.';
+        }
+        this.showError = true;
+      });
       this.email = '';
       this.name = '';
       this.password1 = '';
       this.password2 = '';
+    } else {
+      this.errorMessage =
+        'Veuillez remplir tous les champs correctement avant de continuer.';
+      this.showError = true;
     }
   }
 }

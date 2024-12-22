@@ -46,8 +46,17 @@
       [(ngModel)]="password2"
     ></ion-input>
     <br />
-    <ion-button (click)="signup()" expand="block" color="medium"
-      >inscription</ion-button
-    >
+    <ion-button (click)="signup()" expand="block" color="medium">
+      inscription
+    </ion-button>
   </div>
+
+  <!-- Ion Alert for Error Message -->
+  <ion-alert
+    [isOpen]="showError"
+    [header]="'Erreur d\'inscription'"
+    [message]="errorMessage"
+    [buttons]="['OK']"
+    (ionAlertDidDismiss)="showError = false"
+  ></ion-alert>
 </ion-content>

@@ -27,8 +27,8 @@ export class AuthService {
       });
   }
 
-  signup(email: string, password: string, name: string): void {
-    createUserWithEmailAndPassword(auth, email, password)
+  signup(email: string, password: string, name: string): Promise<void> {
+    return createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         return updateProfile(result.user, { displayName: name });
       })
@@ -38,8 +38,10 @@ export class AuthService {
       })
       .catch((error) => {
         console.error('Erreur lors de l\'inscription :', error);
+        throw error; 
       });
   }
+  
 
   logout(): void {
     signOut(auth)

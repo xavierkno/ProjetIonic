@@ -1,24 +1,37 @@
-<ion-grid>
-  <ion-row>
-    <ion-col size="12" size-md="6" *ngFor="let item of items">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>{{ item.title }}</ion-card-title>
-        </ion-card-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ma Liste d'Objets</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-        <ion-card-content>
-          <ion-thumbnail>
-            <img [src]="item.imageUrl" alt="Image de l'objet" />
-          </ion-thumbnail>
-          <p>{{ item.description }}</p>
-          <p>Salle : {{ item.room }}</p>
-        </ion-card-content>
+<ion-content>
+  <div *ngIf="items.length === 0" class="empty-state">
+    <ion-icon name="sad-outline" class="empty-icon"></ion-icon>
+    <p class="empty-text">Veuillez renseigner des objets que vous avez perdus ou trouvés.</p>
+  </div>
 
-        <ion-footer class="ion-text-center">
-          <ion-button color="tertiary" (click)="editItem(item)">Modifier</ion-button>
-          <ion-button color="danger" (click)="deleteItem(item.id)">Supprimer</ion-button>
-        </ion-footer>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+  <ion-grid *ngIf="items.length > 0">
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let item of items">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ item.title }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-thumbnail>
+              <img [src]="item.imageUrl" alt="Image de l'objet" />
+            </ion-thumbnail>
+            <p>{{ item.description }}</p>
+            <p>Salle : {{ item.room }}</p>
+          </ion-card-content>
+
+          <ion-footer class="ion-text-center">
+            <ion-button color="tertiary" (click)="editItem(item)">Modifier</ion-button>
+            <ion-button color="danger" (click)="deleteItem(item.id)">Supprimer</ion-button>
+          </ion-footer>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

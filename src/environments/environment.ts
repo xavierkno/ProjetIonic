@@ -16,10 +16,13 @@ export const environment = {
   }
 };
 
-// Initialize Firebase App
+// Initialisez Firebase App
 const app = initializeApp(environment.firebase);
 
-// Export Auth instance based on platform
+// Exportez l'instance d'authentification pour toutes les plateformes
 export const auth = Capacitor.isNativePlatform()
   ? initializeAuth(app, { persistence: indexedDBLocalPersistence })
   : getAuth(app);
+
+// Exportez également l'application Firebase pour les autres modules si nécessaire
+export const firebaseApp = app;
